@@ -1,0 +1,2015 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Growth Accelerator - Complete Sales Funnel</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      color: #1f2937;
+      line-height: 1.6;
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
+
+    /* Animations */
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    @keyframes slideInRight {
+      from { opacity: 0; transform: translateX(50px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    /* Page Container */
+    .page {
+      display: none;
+      min-height: 100vh;
+      animation: fadeInUp 0.6s ease-out;
+    }
+
+    .page.active {
+      display: block;
+    }
+
+    /* Progress Bar */
+    .progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: #e5e7eb;
+      z-index: 1000;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #667eea, #764ba2);
+      transition: width 0.5s ease;
+    }
+
+    /* LANDING PAGE */
+    #landing {
+      background: linear-gradient(-45deg, #667eea, #764ba2, #f093fb, #4facfe);
+      background-size: 400% 400%;
+      animation: gradientShift 15s ease infinite;
+      color: white;
+      position: relative;
+      overflow: hidden;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+    }
+
+    .decorative-circle {
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.1;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .circle-1 {
+      width: 400px;
+      height: 400px;
+      background: white;
+      top: -150px;
+      right: -150px;
+    }
+
+    .circle-2 {
+      width: 250px;
+      height: 250px;
+      background: white;
+      bottom: 100px;
+      left: -80px;
+      animation-delay: 2s;
+    }
+
+    .hero-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 80px 20px;
+      position: relative;
+      z-index: 10;
+      width: 100%;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .hero-text h1 {
+      font-size: 3.5em;
+      font-weight: 800;
+      margin-bottom: 25px;
+      line-height: 1.1;
+      text-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+    }
+
+    .hero-text .subtitle {
+      font-size: 1.4em;
+      margin-bottom: 35px;
+      opacity: 0.95;
+      line-height: 1.6;
+    }
+
+    .hero-features {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      margin-bottom: 30px;
+    }
+
+    .feature-bullet {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      font-size: 1.15em;
+    }
+
+    .feature-bullet .icon {
+      background: rgba(255,255,255,0.25);
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .hero-image img {
+      width: 100%;
+      border-radius: 20px;
+      box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+      animation: float 4s ease-in-out infinite;
+    }
+
+    .email-capture {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(20px);
+      padding: 45px;
+      border-radius: 20px;
+      border: 1px solid rgba(255,255,255,0.3);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+      max-width: 550px;
+    }
+
+    .email-capture h3 {
+      color: white;
+      margin-bottom: 15px;
+      font-size: 1.7em;
+    }
+
+    .email-capture .subtext {
+      font-size: 0.95em;
+      opacity: 0.9;
+      margin-bottom: 25px;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+      font-size: 0.95em;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 16px;
+      border: 2px solid rgba(255,255,255,0.3);
+      background: rgba(255,255,255,0.9);
+      border-radius: 12px;
+      font-size: 1.05em;
+      transition: all 0.3s;
+    }
+
+    .form-group input:focus {
+      outline: none;
+      border-color: white;
+      background: white;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+
+    .btn-primary {
+      width: 100%;
+      background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+      color: white;
+      padding: 18px;
+      border: none;
+      border-radius: 12px;
+      font-size: 1.25em;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s;
+      box-shadow: 0 10px 30px rgba(245, 87, 108, 0.4);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 40px rgba(245, 87, 108, 0.6);
+    }
+
+    .privacy-text {
+      font-size: 0.85em;
+      opacity: 0.8;
+      margin-top: 15px;
+      text-align: center;
+    }
+
+    .trust-badges {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 30px;
+      margin-top: 80px;
+      text-align: center;
+    }
+
+    .badge-item {
+      background: rgba(255,255,255,0.15);
+      backdrop-filter: blur(10px);
+      padding: 30px 20px;
+      border-radius: 15px;
+      border: 1px solid rgba(255,255,255,0.2);
+      transition: transform 0.3s;
+    }
+
+    .badge-item:hover {
+      transform: translateY(-5px);
+    }
+
+    .badge-item .badge-icon {
+      font-size: 3em;
+      margin-bottom: 15px;
+    }
+
+    .badge-item .number {
+      font-size: 2.5em;
+      font-weight: 800;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .badge-item .label {
+      font-size: 0.95em;
+      opacity: 0.9;
+    }
+
+    /* SALES PAGE */
+    #sales {
+      background: #f9fafb;
+    }
+
+    .sales-header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      text-align: center;
+      padding: 80px 20px 100px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .sales-header::before {
+      content: '';
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 50%;
+      top: -250px;
+      right: -100px;
+    }
+
+    .sales-header h1 {
+      font-size: 3.2em;
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 1;
+      font-weight: 800;
+    }
+
+    .sales-header .tagline {
+      font-size: 1.4em;
+      opacity: 0.95;
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .sales-content {
+      max-width: 1100px;
+      margin: -70px auto 0;
+      padding: 0 20px 80px;
+    }
+
+    .content-card {
+      background: white;
+      padding: 50px;
+      border-radius: 20px;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+      margin-bottom: 40px;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .content-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.12);
+    }
+
+    .content-card h2 {
+      font-size: 2.3em;
+      margin-bottom: 25px;
+      color: #1f2937;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .content-card p {
+      font-size: 1.15em;
+      color: #4b5563;
+      margin-bottom: 20px;
+      line-height: 1.8;
+    }
+
+    .product-showcase {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: center;
+      margin: 50px 0;
+    }
+
+    .product-showcase img {
+      width: 100%;
+      border-radius: 15px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+    }
+
+    .video-container {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%;
+      background: #000;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+      margin: 40px 0;
+    }
+
+    .video-placeholder {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: white;
+      font-size: 1.5em;
+      cursor: pointer;
+    }
+
+    .video-placeholder:hover {
+      opacity: 0.9;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      margin: 40px 0;
+    }
+
+    .feature-box {
+      background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+      padding: 35px;
+      border-radius: 15px;
+      text-align: center;
+      transition: all 0.3s;
+      border: 2px solid transparent;
+    }
+
+    .feature-box:hover {
+      transform: translateY(-5px);
+      border-color: #667eea;
+      box-shadow: 0 10px 30px rgba(102, 126, 234, 0.2);
+    }
+
+    .feature-box .box-icon {
+      font-size: 3.5em;
+      margin-bottom: 20px;
+    }
+
+    .feature-box h4 {
+      font-size: 1.3em;
+      margin-bottom: 12px;
+      color: #1f2937;
+    }
+
+    .feature-box p {
+      font-size: 1em;
+      color: #6b7280;
+      line-height: 1.6;
+    }
+
+    .benefits-section {
+      background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+      padding: 50px;
+      border-radius: 20px;
+      margin: 40px 0;
+    }
+
+    .benefits-section h2 {
+      text-align: center;
+      margin-bottom: 40px;
+      color: #1f2937;
+    }
+
+    .benefits-list {
+      list-style: none;
+      margin: 0;
+      display: grid;
+      gap: 20px;
+    }
+
+    .benefits-list li {
+      padding: 25px 25px 25px 70px;
+      position: relative;
+      font-size: 1.15em;
+      background: white;
+      border-radius: 12px;
+      border-left: 5px solid #10b981;
+      transition: transform 0.3s;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    }
+
+    .benefits-list li:hover {
+      transform: translateX(10px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    }
+
+    .benefits-list li:before {
+      content: "✓";
+      position: absolute;
+      left: 25px;
+      color: #10b981;
+      font-weight: bold;
+      font-size: 1.8em;
+    }
+
+    .testimonial-section {
+      margin: 50px 0;
+    }
+
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 30px;
+      margin: 30px 0;
+    }
+
+    .testimonial {
+      background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+      padding: 40px;
+      border-radius: 15px;
+      border-left: 5px solid #f59e0b;
+      transition: transform 0.3s;
+      position: relative;
+    }
+
+    .testimonial:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(245, 158, 11, 0.2);
+    }
+
+    .testimonial::before {
+      content: '"';
+      font-size: 5em;
+      position: absolute;
+      top: 10px;
+      left: 15px;
+      color: rgba(245, 158, 11, 0.3);
+      font-family: Georgia, serif;
+    }
+
+    .testimonial .stars {
+      color: #f59e0b;
+      font-size: 1.3em;
+      margin-bottom: 15px;
+    }
+
+    .testimonial p {
+      font-style: italic;
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 1;
+      font-size: 1.05em;
+      line-height: 1.7;
+    }
+
+    .testimonial .author {
+      font-weight: 700;
+      color: #1f2937;
+      font-style: normal;
+      font-size: 1.05em;
+    }
+
+    .testimonial .role {
+      color: #6b7280;
+      font-size: 0.95em;
+      font-style: normal;
+    }
+
+    .guarantee-box {
+      background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+      padding: 45px;
+      border-radius: 20px;
+      text-align: center;
+      margin: 40px 0;
+      border: 3px solid #3b82f6;
+    }
+
+    .guarantee-box .guarantee-icon {
+      font-size: 4em;
+      margin-bottom: 20px;
+    }
+
+    .guarantee-box h3 {
+      font-size: 2em;
+      margin-bottom: 15px;
+      color: #1f2937;
+    }
+
+    .guarantee-box p {
+      font-size: 1.15em;
+      color: #4b5563;
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    .price-box {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 60px;
+      border-radius: 20px;
+      text-align: center;
+      margin: 50px 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .price-box::before {
+      content: '';
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 50%;
+      top: -50px;
+      right: -50px;
+    }
+
+    .price-box .badge {
+      background: #f59e0b;
+      color: white;
+      padding: 12px 30px;
+      border-radius: 30px;
+      display: inline-block;
+      margin-bottom: 25px;
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: 1em;
+      letter-spacing: 1px;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    .price-comparison {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+
+    .price-box .original-price {
+      text-decoration: line-through;
+      opacity: 0.7;
+      font-size: 2em;
+    }
+
+    .price-box .current-price {
+      font-size: 5em;
+      font-weight: 800;
+      margin: 20px 0;
+      text-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+    }
+
+    .price-box .price-label {
+      font-size: 1.2em;
+      opacity: 0.95;
+      margin-bottom: 30px;
+    }
+
+    .price-features {
+      text-align: left;
+      max-width: 500px;
+      margin: 30px auto;
+    }
+
+    .price-features li {
+      padding: 12px 0;
+      font-size: 1.1em;
+      border-bottom: 1px solid rgba(255,255,255,0.2);
+    }
+
+    .cta-large {
+      background: white;
+      color: #667eea;
+      padding: 22px 60px;
+      border: none;
+      border-radius: 15px;
+      font-size: 1.4em;
+      font-weight: 800;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+    }
+
+    .cta-large:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+    }
+
+    .secure-checkout {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 30px;
+      margin-top: 30px;
+      font-size: 1.05em;
+      opacity: 0.95;
+    }
+
+    /* THANK YOU PAGE */
+    #thankyou {
+      background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-align: center;
+      padding: 60px 20px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #thankyou::before {
+      content: '';
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 50%;
+      top: -200px;
+      left: -200px;
+      animation: float 8s ease-in-out infinite;
+    }
+
+    .thankyou-content {
+      max-width: 800px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .thankyou-content .thankyou-icon {
+      font-size: 7em;
+      margin-bottom: 30px;
+      animation: pulse 1.5s ease-in-out infinite;
+    }
+
+    .thankyou-content h1 {
+      font-size: 3.5em;
+      margin-bottom: 25px;
+      text-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+      font-weight: 800;
+    }
+
+    .thankyou-content p {
+      font-size: 1.4em;
+      margin-bottom: 30px;
+      opacity: 0.95;
+      line-height: 1.7;
+    }
+
+    .order-summary {
+      background: rgba(255,255,255,0.2);
+      backdrop-filter: blur(15px);
+      padding: 40px;
+      border-radius: 20px;
+      margin: 40px 0;
+      border: 1px solid rgba(255,255,255,0.3);
+      text-align: left;
+    }
+
+    .order-summary h3 {
+      font-size: 1.8em;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .order-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 15px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.2);
+      font-size: 1.15em;
+    }
+
+    .order-item:last-child {
+      border-bottom: none;
+      font-weight: 700;
+      font-size: 1.3em;
+      padding-top: 20px;
+    }
+
+    .next-steps {
+      background: rgba(255,255,255,0.2);
+      backdrop-filter: blur(15px);
+      padding: 40px;
+      border-radius: 20px;
+      margin: 40px 0;
+      border: 1px solid rgba(255,255,255,0.3);
+    }
+
+    .next-steps h3 {
+      font-size: 1.8em;
+      margin-bottom: 25px;
+    }
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+      margin-top: 30px;
+    }
+
+    .step-item {
+      background: rgba(255,255,255,0.15);
+      padding: 25px;
+      border-radius: 15px;
+      transition: transform 0.3s;
+    }
+
+    .step-item:hover {
+      transform: translateY(-5px);
+    }
+
+    .step-item .step-number {
+      background: white;
+      color: #10b981;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5em;
+      font-weight: 800;
+      margin: 0 auto 20px;
+    }
+
+    .step-item h4 {
+      font-size: 1.2em;
+      margin-bottom: 10px;
+    }
+
+    .step-item p {
+      font-size: 1em;
+      opacity: 0.9;
+    }
+
+    .btn-secondary {
+      background: white;
+      color: #10b981;
+      padding: 20px 60px;
+      border: none;
+      border-radius: 15px;
+      font-size: 1.3em;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-top: 30px;
+    }
+
+    .btn-secondary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+    }
+
+    /* UPSELL PAGE */
+    #upsell {
+      background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+      padding: 80px 20px;
+      min-height: 100vh;
+    }
+
+    .upsell-container {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .upsell-header {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .upsell-header .urgent-badge {
+      background: linear-gradient(135deg, #dc2626, #991b1b);
+      color: white;
+      padding: 15px 35px;
+      border-radius: 30px;
+      display: inline-block;
+      margin-bottom: 30px;
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: 1.1em;
+      letter-spacing: 1px;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    .upsell-header h1 {
+      font-size: 3.2em;
+      color: #1f2937;
+      margin-bottom: 20px;
+      background: linear-gradient(135deg, #f59e0b, #dc2626);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-weight: 800;
+    }
+
+    .upsell-header .subheading {
+      font-size: 1.5em;
+      color: #6b7280;
+      line-height: 1.6;
+    }
+
+    .upsell-offer {
+      background: white;
+      border: 4px dashed #f59e0b;
+      padding: 60px;
+      border-radius: 25px;
+      text-align: center;
+      box-shadow: 0 20px 60px rgba(245, 158, 11, 0.2);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .upsell-offer::before {
+      content: '⚡';
+      position: absolute;
+      font-size: 20em;
+      opacity: 0.05;
+      top: -100px;
+      right: -100px;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .upsell-offer .upsell-badge {
+      background: linear-gradient(135deg, #f59e0b 0%, #dc2626 100%);
+      color: white;
+      padding: 12px 30px;
+      border-radius: 30px;
+      display: inline-block;
+      margin-bottom: 25px;
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: 1em;
+      letter-spacing: 1px;
+      box-shadow: 0 10px 25px rgba(245, 158, 11, 0.3);
+    }
+
+    .upsell-offer h2 {
+      font-size: 2.8em;
+      margin-bottom: 25px;
+      color: #1f2937;
+      line-height: 1.3;
+    }
+
+    .upsell-offer .value-prop {
+      font-size: 1.3em;
+      color: #6b7280;
+      margin-bottom: 40px;
+      line-height: 1.7;
+    }
+
+    .upsell-image {
+      margin: 40px 0;
+    }
+
+    .upsell-image img {
+      width: 100%;
+      max-width: 600px;
+      border-radius: 20px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+    }
+
+    .upsell-features {
+      text-align: left;
+      margin: 50px auto;
+      max-width: 700px;
+    }
+
+    .feature-item {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 30px;
+      padding: 25px;
+      background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+      border-radius: 15px;
+      border-left: 5px solid #10b981;
+      transition: transform 0.3s;
+      animation: slideInRight 0.6s ease-out;
+    }
+
+    .feature-item:nth-child(2) { animation-delay: 0.1s; }
+    .feature-item:nth-child(3) { animation-delay: 0.2s; }
+    .feature-item:nth-child(4) { animation-delay: 0.3s; }
+
+    .feature-item:hover {
+      transform: translateX(10px);
+      box-shadow: 0 10px 30px rgba(16, 185, 129, 0.15);
+    }
+
+    .feature-icon {
+      background: linear-gradient(135deg, #10b981, #059669);
+      color: white;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 20px;
+      flex-shrink: 0;
+      font-weight: bold;
+      font-size: 1.3em;
+      box-shadow: 0 5px 15px rgba(16, 185, 129, 0.3);
+    }
+
+    .feature-text {
+      flex: 1;
+    }
+
+    .feature-text h4 {
+      margin-bottom: 10px;
+      color: #1f2937;
+      font-size: 1.3em;
+    }
+
+    .feature-text .value-tag {
+      color: #10b981;
+      font-weight: 700;
+      font-size: 0.95em;
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .feature-text p {
+      color: #6b7280;
+      font-size: 1.05em;
+      line-height: 1.6;
+    }
+
+    .value-calculation {
+      background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+      padding: 40px;
+      border-radius: 20px;
+      margin: 40px 0;
+    }
+
+    .value-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 15px 0;
+      border-bottom: 1px solid rgba(59, 130, 246, 0.2);
+      font-size: 1.15em;
+    }
+
+    .value-row:last-child {
+      border-bottom: none;
+      font-weight: 800;
+      font-size: 1.4em;
+      color: #1f2937;
+      padding-top: 25px;
+      margin-top: 15px;
+      border-top: 3px solid #3b82f6;
+    }
+
+    .comparison {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 30px;
+      margin: 30px 0;
+      font-size: 1.4em;
+    }
+
+    .comparison .regular {
+      text-decoration: line-through;
+      color: #9ca3af;
+    }
+
+    .comparison .arrow {
+      font-size: 2em;
+      color: #10b981;
+    }
+
+    .comparison .discount {
+      color: #10b981;
+      font-weight: 800;
+      font-size: 1.3em;
+    }
+
+    .upsell-price {
+      font-size: 4.5em;
+      font-weight: 800;
+      background: linear-gradient(135deg, #f59e0b, #dc2626);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin: 30px 0;
+    }
+
+    .savings-badge {
+      background: #10b981;
+      color: white;
+      padding: 10px 25px;
+      border-radius: 25px;
+      display: inline-block;
+      font-weight: 700;
+      font-size: 1.2em;
+      margin-bottom: 30px;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 50px;
+    }
+
+    .btn-accept {
+      background: linear-gradient(135deg, #f59e0b 0%, #dc2626 100%);
+      color: white;
+      padding: 22px 60px;
+      border: none;
+      border-radius: 15px;
+      font-size: 1.3em;
+      font-weight: 800;
+      cursor: pointer;
+      transition: all 0.3s;
+      box-shadow: 0 10px 30px rgba(245, 158, 11, 0.4);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .btn-accept:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 40px rgba(245, 158, 11, 0.6);
+    }
+
+    .btn-decline {
+      background: #6b7280;
+      color: white;
+      padding: 22px 60px;
+      border: none;
+      border-radius: 15px;
+      font-size: 1.3em;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .btn-decline:hover {
+      background: #4b5563;
+      transform: translateY(-3px);
+    }
+
+    .urgency-note {
+      margin-top: 30px;
+      padding: 20px;
+      background: rgba(220, 38, 38, 0.1);
+      border-radius: 12px;
+      border: 2px solid #dc2626;
+    }
+
+    .urgency-note p {
+      color: #dc2626;
+      font-size: 1.1em;
+      font-weight: 700;
+      margin: 0;
+    }
+
+    /* LISTICLE PAGE */
+    #listicle {
+      background: white;
+      padding: 80px 20px;
+    }
+
+    .listicle-container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .listicle-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .listicle-header img {
+      width: 100%;
+      max-width: 800px;
+      border-radius: 20px;
+      margin-bottom: 40px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+    }
+
+    .listicle-header h1 {
+      font-size: 3.2em;
+      color: #1f2937;
+      margin-bottom: 25px;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-weight: 800;
+      line-height: 1.2;
+    }
+
+    .listicle-header .intro {
+      font-size: 1.35em;
+      color: #6b7280;
+      line-height: 1.8;
+      max-width: 750px;
+      margin: 0 auto;
+    }
+
+    .article-item {
+      background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%);
+      padding: 50px;
+      border-radius: 20px;
+      margin-bottom: 40px;
+      border-left: 6px solid #667eea;
+      transition: all 0.3s;
+      position: relative;
+    }
+
+    .article-item:hover {
+      transform: translateX(10px);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+    }
+
+    .article-item .article-number {
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: white;
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2em;
+      font-weight: 800;
+      margin-bottom: 25px;
+      box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+    }
+
+    .article-item h3 {
+      font-size: 2.2em;
+      color: #1f2937;
+      margin-bottom: 20px;
+      line-height: 1.3;
+    }
+
+    .article-item p {
+      font-size: 1.15em;
+      color: #4b5563;
+      line-height: 1.9;
+      margin-bottom: 25px;
+    }
+
+    .article-item img {
+      width: 100%;
+      border-radius: 15px;
+      margin-top: 25px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+
+    .article-item .highlight {
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      padding: 20px;
+      border-radius: 12px;
+      border-left: 4px solid #f59e0b;
+      margin-top: 20px;
+      font-style: italic;
+    }
+
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin: 30px 0;
+    }
+
+    .stat-box {
+      background: white;
+      padding: 25px;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    }
+
+    .stat-box .stat-number {
+      font-size: 2.5em;
+      font-weight: 800;
+      color: #667eea;
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    .stat-box .stat-label {
+      font-size: 0.95em;
+      color: #6b7280;
+    }
+
+    .final-cta {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 70px 60px;
+      border-radius: 25px;
+      text-align: center;
+      margin-top: 60px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .final-cta::before {
+      content: '';
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 50%;
+      bottom: -200px;
+      right: -100px;
+    }
+
+    .final-cta .cta-icon {
+      font-size: 5em;
+      margin-bottom: 25px;
+    }
+
+    .final-cta h2 {
+      font-size: 3em;
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 1;
+      font-weight: 800;
+    }
+
+    .final-cta p {
+      font-size: 1.4em;
+      margin-bottom: 40px;
+      opacity: 0.95;
+      position: relative;
+      z-index: 1;
+      line-height: 1.6;
+    }
+
+    .final-cta .btn-primary {
+      position: relative;
+      z-index: 1;
+      max-width: 400px;
+      margin: 0 auto;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 968px) {
+      .hero-grid,
+      .product-showcase {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .hero-text h1 {
+        font-size: 2.5em;
+      }
+
+      .email-capture {
+        padding: 30px 20px;
+      }
+
+      .content-card {
+        padding: 30px 20px;
+      }
+
+      .price-box .current-price {
+        font-size: 3.5em;
+      }
+
+      .upsell-offer {
+        padding: 40px 25px;
+      }
+
+      .cta-buttons {
+        flex-direction: column;
+      }
+
+      .btn-accept, .btn-decline {
+        width: 100%;
+      }
+
+      .testimonial-grid,
+      .feature-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .trust-badges {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .steps-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .stats-row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Progress Bar -->
+  <div class="progress-bar">
+    <div class="progress-fill" id="progressFill" style="width: 20%;"></div>
+  </div>
+
+  <!-- STEP 1: LANDING PAGE -->
+  <div id="landing" class="page active">
+    <div class="decorative-circle circle-1"></div>
+    <div class="decorative-circle circle-2"></div>
+    
+    <div class="hero-content">
+      <div class="hero-grid">
+        <div class="hero-text">
+          <h1>Transform Your Business in 30 Days or Less</h1>
+          <p class="subtitle">Join 10,000+ entrepreneurs who've scaled their revenue 3X using our proven growth system. Get instant access to the complete framework.</p>
+          
+          <div class="hero-features">
+            <div class="feature-bullet">
+              <span class="icon">✓</span>
+              <span>Step-by-step video training</span>
+            </div>
+            <div class="feature-bullet">
+              <span class="icon">✓</span>
+              <span>Done-for-you templates & swipe files</span>
+            </div>
+            <div class="feature-bullet">
+              <span class="icon">✓</span>
+              <span>Private community access</span>
+            </div>
+            <div class="feature-bullet">
+              <span class="icon">✓</span>
+              <span>30-day money-back guarantee</span>
+            </div>
+          </div>
+          
+          <div class="email-capture">
+            <h3>🚀 Get Instant Free Access</h3>
+            <p class="subtext">Enter your details below to unlock your free training</p>
+            <form id="leadForm">
+              <div class="form-group">
+                <label>Full Name</label>
+                <input type="text" id="name" placeholder="John Smith" required />
+              </div>
+              <div class="form-group">
+                <label>Email Address</label>
+                <input type="email" id="email" placeholder="john@example.com" required />
+              </div>
+              <button type="submit" class="btn-primary">Get My Free Training Now</button>
+              <p class="privacy-text">🔒 Your information is 100% secure. We hate spam too.</p>
+            </form>
+          </div>
+        </div>
+
+        <div class="hero-image">
+          <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop" alt="Business Growth Dashboard" />
+        </div>
+      </div>
+
+      <div class="trust-badges">
+        <div class="badge-item">
+          <div class="badge-icon">👥</div>
+          <span class="number">10,247</span>
+          <span class="label">Active Students</span>
+        </div>
+        <div class="badge-item">
+          <div class="badge-icon">⭐</div>
+          <span class="number">4.9/5</span>
+          <span class="label">Average Rating</span>
+        </div>
+        <div class="badge-item">
+          <div class="badge-icon">💰</div>
+          <span class="number">$2.4M+</span>
+          <span class="label">Revenue Generated</span>
+        </div>
+        <div class="badge-item">
+          <div class="badge-icon">🎯</div>
+          <span class="number">95%</span>
+          <span class="label">Success Rate</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 2: SALES PAGE -->
+  <div id="sales" class="page">
+    <div class="sales-header">
+      <h1>The Growth Accelerator Masterclass</h1>
+      <p class="tagline">Your complete roadmap to predictable, scalable business growth. Transform your business in 30 days with our proven system used by thousands of entrepreneurs.</p>
+    </div>
+
+    <div class="sales-content">
+      
+      <div class="product-showcase">
+        <div>
+          <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=600&h=400&fit=crop" alt="Frustrated Entrepreneur" />
+        </div>
+        <div>
+          <h2>Are You Stuck in the Struggle?</h2>
+          <p>You've tried random tactics. You've spent thousands on ads that didn't convert. You work 60-hour weeks but your revenue barely moves.</p>
+          <p><strong>Meanwhile, you watch competitors with inferior products scale past you.</strong></p>
+          <p>The problem isn't your work ethic. It's not your product. It's your system—or lack of one.</p>
+        </div>
+      </div>
+
+      <div class="content-card">
+        <h2>Introducing Your Growth System 🚀</h2>
+        <p>The Growth Accelerator Masterclass is the only step-by-step blueprint that takes you from overwhelmed entrepreneur to confident business owner with a predictable revenue engine.</p>
+        
+        <div class="video-container">
+          <div class="video-placeholder" onclick="alert('▶️ Video would play here')">
+            <div>
+              <div style="font-size: 4em; margin-bottom: 20px;">▶️</div>
+              <div>Watch: How This System Generated $847K in 90 Days</div>
+            </div>
+          </div>
+        </div>
+
+        <p>This isn't theory. This isn't motivational fluff. This is a battle-tested framework used by 7-figure businesses—now packaged into a simple, actionable course.</p>
+      </div>
+
+      <div class="content-card">
+        <h2>What's Inside the Program 📚</h2>
+        <div class="feature-grid">
+          <div class="feature-box">
+            <div class="box-icon">🧠</div>
+            <h4>Module 1</h4>
+            <p><strong>Psychology of High-Converting Offers</strong> - Master buyer behavior and conversion triggers</p>
+          </div>
+          <div class="feature-box">
+            <div class="box-icon">🔄</div>
+            <h4>Module 2</h4>
+            <p><strong>Automated Sales Funnels</strong> - Build systems that sell 24/7 on autopilot</p>
+          </div>
+          <div class="feature-box">
+            <div class="box-icon">📈</div>
+            <h4>Module 3</h4>
+            <p><strong>Traffic Strategies That Work</strong> - Get qualified leads daily without guesswork</p>
+          </div>
+          <div class="feature-box">
+            <div class="box-icon">✉️</div>
+            <h4>Module 4</h4>
+            <p><strong>Email Marketing Mastery</strong> - Turn subscribers into paying customers</p>
+          </div>
+          <div class="feature-box">
+            <div class="box-icon">⚡</div>
+            <h4>Module 5</h4>
+            <p><strong>Scaling Without Burnout</strong> - Grow sustainably with systems and automation</p>
+          </div>
+          <div class="feature-box">
+            <div class="box-icon">🎁</div>
+            <h4>Bonuses</h4>
+            <p><strong>$2,000+ in Free Resources</strong> - Templates, swipe files, and community access</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="benefits-section">
+        <h2>Everything You Get Inside 🎯</h2>
+        <ul class="benefits-list">
+          <li><strong>5 Core Training Modules</strong> - 10+ hours of step-by-step video instruction</li>
+          <li><strong>50+ Done-For-You Templates</strong> - Landing pages, emails, ads, and sales scripts</li>
+          <li><strong>Private Community Access</strong> - Connect with 10,000+ ambitious entrepreneurs ($297/year value)</li>
+          <li><strong>Monthly Live Q&A Sessions</strong> - Get your questions answered by experts</li>
+          <li><strong>Bonus: The Funnel Blueprint Library</strong> - 25 proven funnel templates ($497 value)</li>
+          <li><strong>Bonus: Traffic Accelerator Playbook</strong> - Exact ad strategies that convert ($197 value)</li>
+          <li><strong>Bonus: Email Sequence Swipe File</strong> - 100+ high-converting emails ($297 value)</li>
+          <li><strong>Lifetime Access & Updates</strong> - All future content additions at no extra cost</li>
+        </ul>
+      </div>
+
+      <div class="content-card testimonial-section">
+        <h2>Real Results from Real Students ⭐</h2>
+        <div class="testimonial-grid">
+          <div class="testimonial">
+            <div class="stars">★★★★★</div>
+            <p>"This course paid for itself in 48 hours. I implemented the email sequence strategy and made $3,400 from my list. The templates alone are worth 10X what I paid."</p>
+            <p class="author">— Sarah Mitchell</p>
+            <p class="role">E-commerce Owner, $450K/year</p>
+          </div>
+          <div class="testimonial">
+            <div class="stars">★★★★★</div>
+            <p>"I've bought dozens of courses. This is the ONLY one I actually finished AND saw results from. No fluff, just pure actionable gold. My revenue doubled in 60 days."</p>
+            <p class="author">— James Rivera</p>
+            <p class="role">Marketing Consultant, $280K/year</p>
+          </div>
+          <div class="testimonial">
+            <div class="stars">★★★★★</div>
+            <p>"The funnel templates saved me 3 months of trial and error. I launched my course using their exact blueprint and hit $50K in the first 2 weeks. Unbelievable ROI."</p>
+            <p class="author">— Rachel Thompson</p>
+            <p class="role">Course Creator, $350K/year</p>
+          </div>
+          <div class="testimonial">
+            <div class="stars">★★★★★</div>
+            <p>"Finally, a program that delivers on its promises. The community alone is priceless. I've made connections that led to $100K+ in partnerships. Best investment I've made."</p>
+            <p class="author">— Michael Chen</p>
+            <p class="role">SaaS Founder, $620K/year</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="guarantee-box">
+        <div class="guarantee-icon">🛡️</div>
+        <h3>Our Iron-Clad 30-Day Guarantee</h3>
+        <p>Try the entire program risk-free for 30 days. If you don't see measurable improvement in your business, just email us for a full refund. No questions asked. You literally can't lose.</p>
+      </div>
+
+      <div class="content-card">
+        <div class="price-box">
+          <span class="badge">⚡ LIMITED TIME OFFER - 80% OFF</span>
+          <div class="price-comparison">
+            <span class="original-price">$497</span>
+          </div>
+          <p class="current-price">$97</p>
+          <p class="price-label">One-time payment • Lifetime access • 30-Day Guarantee</p>
+          
+          <div class="price-features">
+            <ul style="list-style: none; padding: 0;">
+              <li>✅ All 5 training modules</li>
+              <li>✅ 50+ done-for-you templates</li>
+              <li>✅ Private community access</li>
+              <li>✅ Monthly live Q&A sessions</li>
+              <li>✅ All bonuses ($2,000+ value)</li>
+              <li>✅ Lifetime updates</li>
+            </ul>
+          </div>
+
+          <button class="cta-large" onclick="navigateTo('thankyou')">🚀 YES! Give Me Access Now</button>
+          
+          <div class="secure-checkout">
+            <span>🔒 Secure Checkout</span>
+            <span>💳 All Cards Accepted</span>
+            <span>✅ Instant Access</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- STEP 3: THANK YOU PAGE -->
+  <div id="thankyou" class="page">
+    <div class="thankyou-content">
+      <div class="thankyou-icon">🎉</div>
+      <h1>Welcome to the Family!</h1>
+      <p>Your purchase was successful! You're now part of an elite community of 10,000+ growth-focused entrepreneurs.</p>
+      
+      <div class="order-summary">
+        <h3>📋 Order Summary</h3>
+        <div class="order-item">
+          <span>Growth Accelerator Masterclass</span>
+          <span>$97.00</span>
+        </div>
+        <div class="order-item">
+          <span>Bonus: Funnel Blueprint Library</span>
+          <span>$497.00</span>
+        </div>
+        <div class="order-item">
+          <span>Bonus: Traffic Accelerator Playbook</span>
+          <span>$197.00</span>
+        </div>
+        <div class="order-item">
+          <span>Bonus: Email Swipe File</span>
+          <span>$297.00</span>
+        </div>
+        <div class="order-item">
+          <span><strong>Total Value</strong></span>
+          <span><strong>$1,088.00</strong></span>
+        </div>
+        <div class="order-item">
+          <span><strong>You Paid</strong></span>
+          <span><strong>$97.00</strong></span>
+        </div>
+      </div>
+
+      <div class="next-steps">
+        <h3>✨ What Happens Next</h3>
+        <div class="steps-grid">
+          <div class="step-item">
+            <div class="step-number">1</div>
+            <h4>Check Your Email</h4>
+            <p>Login credentials sent to your inbox within 2 minutes</p>
+          </div>
+          <div class="step-item">
+            <div class="step-number">2</div>
+            <h4>Access Dashboard</h4>
+            <p>Log in and start Module 1 immediately</p>
+          </div>
+          <div class="step-item">
+            <div class="step-number">3</div>
+            <h4>Join Community</h4>
+            <p>Connect with 10,000+ entrepreneurs just like you</p>
+          </div>
+        </div>
+      </div>
+
+      <p style="font-size: 1.5em; margin: 50px 0 20px;">But wait... I have something <strong>VERY special</strong> for you 🎁</p>
+      <p style="font-size: 1.2em; opacity: 0.95; margin-bottom: 30px;">As a thank you for joining, I want to offer you an exclusive upgrade that's only available on this page...</p>
+      
+      <button class="btn-secondary" onclick="navigateTo('upsell')">👉 Show Me The Exclusive Offer</button>
+    </div>
+  </div>
+
+  <!-- STEP 4: UPSELL PAGE -->
+  <div id="upsell" class="page">
+    <div class="upsell-container">
+      <div class="upsell-header">
+        <div class="urgent-badge">⚠️ ONE-TIME OFFER • EXPIRES IN 10 MINUTES</div>
+        <h1>Wait! Your Order Is Not Complete...</h1>
+        <p class="subheading">Add this exclusive VIP upgrade for only $147 and get 10X faster results with personalized guidance</p>
+      </div>
+
+      <div class="upsell-offer">
+        <span class="upsell-badge">🔥 92% OF STUDENTS CHOOSE THIS UPGRADE</span>
+        <h2>Upgrade to VIP All-Access Pass</h2>
+        <p class="value-prop">Most students see results in 30 days. VIP members see results in <strong>7 days or less</strong> with personalized coaching and advanced strategies.</p>
+
+        <div class="upsell-image">
+          <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=700&h=450&fit=crop" alt="VIP Coaching Session" />
+        </div>
+
+        <div class="upsell-features">
+          <div class="feature-item">
+            <div class="feature-icon">✓</div>
+            <div class="feature-text">
+              <span class="value-tag">$497 VALUE</span>
+              <h4>1-on-1 Strategy Call with Expert</h4>
+              <p>60-minute personalized session to create your custom growth plan. We'll analyze your business and create a tailored roadmap for maximum results.</p>
+            </div>
+          </div>
+
+          <div class="feature-item">
+            <div class="feature-icon">✓</div>
+            <div class="feature-text">
+              <span class="value-tag">$197 VALUE</span>
+              <h4>VIP Priority Email Support</h4>
+              <p>Direct access to our team with 24-hour response time. Get your questions answered fast so you never get stuck.</p>
+            </div>
+          </div>
+
+          <div class="feature-item">
+            <div class="feature-icon">✓</div>
+            <div class="feature-text">
+              <span class="value-tag">$297 VALUE</span>
+              <h4>Advanced Funnel Templates Library</h4>
+              <p>10 high-converting funnel blueprints ready to deploy today. These are the exact funnels we use for our $1M+ clients.</p>
+            </div>
+          </div>
+
+          <div class="feature-item">
+            <div class="feature-icon">✓</div>
+            <div class="feature-text">
+              <span class="value-tag">$147/MONTH VALUE</span>
+              <h4>Monthly Group Coaching Sessions</h4>
+              <p>Live training sessions and hot-seat coaching with industry experts. Get feedback on your funnels, ads, and strategies.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="value-calculation">
+          <div class="value-row">
+            <span>1-on-1 Strategy Call</span>
+            <span>$497</span>
+          </div>
+          <div class="value-row">
+            <span>VIP Priority Support</span>
+            <span>$197</span>
+          </div>
+          <div class="value-row">
+            <span>Advanced Funnel Templates</span>
+            <span>$297</span>
+          </div>
+          <div class="value-row">
+            <span>Monthly Group Coaching (12 months)</span>
+            <span>$1,764</span>
+          </div>
+          <div class="value-row">
+            <span>TOTAL VALUE</span>
+            <span>$2,755</span>
+          </div>
+        </div>
+
+        <div class="comparison">
+          <span class="regular">Regular Price: $997</span>
+          <span class="arrow">→</span>
+          <span class="discount">Today: $147</span>
+        </div>
+
+        <span class="savings-badge">💰 Save $850 (85% OFF)</span>
+
+        <p class="upsell-price">Just $147</p>
+
+        <div class="cta-buttons">
+          <button class="btn-accept" onclick="navigateTo('listicle')">🚀 YES! Add VIP Access to My Order</button>
+          <button class="btn-decline" onclick="navigateTo('listicle')">No Thanks, I'll Pass on This Offer</button>
+        </div>
+
+        <div class="urgency-note">
+          <p>⚠️ This offer expires when you leave this page and will NEVER be available again at this price</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 5: LISTICLE PAGE -->
+  <div id="listicle" class="page">
+    <div class="listicle-container">
+      <div class="listicle-header">
+        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=900&h=450&fit=crop" alt="Successful Team Celebration" />
+        <h1>5 Reasons Smart Entrepreneurs Choose Growth Accelerator</h1>
+        <p class="intro">Still wondering if this is right for you? Here's why thousands of business owners trust our system to scale their revenue faster than any other program in the market...</p>
+      </div>
+
+      <div class="article-item">
+        <div class="article-number">1</div>
+        <h3>Proven Framework, Not Empty Theory 📊</h3>
+        <p>Unlike generic business courses filled with motivational speeches and vague advice, Growth Accelerator teaches battle-tested strategies used by 7-figure businesses. Every module is built on real case studies from our community members who have collectively generated over $50 million in revenue.</p>
+        
+        <div class="stats-row">
+          <div class="stat-box">
+            <span class="stat-number">10,247</span>
+            <span class="stat-label">Active Students</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-number">$50M+</span>
+            <span class="stat-label">Revenue Generated</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-number">95%</span>
+            <span class="stat-label">Success Rate</span>
+          </div>
+        </div>
+
+        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=400&fit=crop" alt="Data Analytics Dashboard" />
+        
+        <div class="highlight">
+          <p><strong>Real student result:</strong> "I implemented the funnel strategy from Module 2 and generated $47,000 in my first launch. This stuff actually works." - Jennifer K.</p>
+        </div>
+      </div>
+
+      <div class="article-item">
+        <div class="article-number">2</div>
+        <h3>Implementation Over Information 🛠️</h3>
+        <p>We don't just teach concepts—we give you the exact templates, scripts, and frameworks to implement immediately. Our students see results in days, not months, because everything is plug-and-play ready. No tech skills required. No complicated setups. Just copy, paste, and customize.</p>
+        
+        <p>You get instant access to:</p>
+        <ul style="margin-left: 30px; margin-top: 15px; line-height: 2;">
+          <li>50+ landing page templates</li>
+          <li>100+ email sequences</li>
+          <li>25 complete funnel blueprints</li>
+          <li>Video ads scripts & storyboards</li>
+          <li>Sales page copywriting templates</li>
+        </ul>
+
+        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&h=400&fit=crop" alt="Business Planning with Templates" />
+      </div>
+
+      <div class="article-item">
+        <div class="article-number">3</div>
+        <h3>Built for Busy Entrepreneurs ⏰</h3>
+        <p>No 40-hour video courses here. Our training is condensed, focused, and designed to be consumed in bite-sized 15-minute modules. Spend just 30 minutes a day and still see transformational results. Perfect for founders juggling multiple responsibilities, family commitments, and a full schedule.</p>
+        
+        <div class="highlight">
+          <p><strong>Time-saving breakdown:</strong> Complete the entire core program in just 10 hours spread across 2 weeks. Most students implement their first funnel by day 7.</p>
+        </div>
+
+        <img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?w=800&h=400&fit=crop" alt="Productive Time Management" />
+      </div>
+
+      <div class="article-item">
+        <div class="article-number">4</div>
+        <h3>Community That Actually Cares 🤝</h3>
+        <p>Join a network of 10,000+ ambitious, supportive entrepreneurs who celebrate your wins and help you troubleshoot challenges. Our private community is the secret weapon behind our students' success. Get real-time feedback, form strategic partnerships, and never feel alone on your journey again.</p>
+        
+        <p>Inside the community you'll find:</p>
+        <ul style="margin-left: 30px; margin-top: 15px; line-height: 2;">
+          <li>Daily wins and success celebrations</li>
+          <li>Expert AMA sessions every week</li>
+          <li>Accountability partnerships</li>
+          <li>Resource sharing and collaboration</li>
+          <li>Job board for hiring/partnerships</li>
+        </ul>
+
+        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=400&fit=crop" alt="Collaborative Team Meeting" />
+      </div>
+
+      <div class="article-item">
+        <div class="article-number">5</div>
+        <h3>Risk-Free 30-Day Guarantee 🛡️</h3>
+        <p>We're so confident you'll love the program that we offer an iron-clad, no-questions-asked refund policy. If you don't see measurable value within 30 days—if you don't learn strategies that improve your business—just email us for a full refund. You literally can't lose. All the upside, zero risk.</p>
+        
+        <div class="highlight">
+          <p><strong>Our guarantee promise:</strong> If you complete at least 3 modules and implement the strategies but don't see ANY improvement in your business metrics, we'll refund every penny. Plus, you keep all the bonuses.</p>
+        </div>
+
+        <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=800&h=400&fit=crop" alt="Handshake Business Deal" />
+      </div>
+
+      <div class="final-cta">
+        <div class="cta-icon">🚀</div>
+        <h2>Ready to Join 10,000+ Growing Businesses?</h2>
+        <p>Start your journey to predictable, scalable revenue today. Limited spots available this month—don't miss your chance to transform your business!</p>
+        <button class="btn-primary" onclick="navigateTo('landing')">🎯 Yes! Get Started Now</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Funnel progression tracking
+    const funnelSteps = {
+      'landing': { step: 1, progress: 20, name: 'Lead Capture' },
+      'sales': { step: 2, progress: 40, name: 'Product Presentation' },
+      'thankyou': { step: 3, progress: 60, name: 'Order Confirmation' },
+      'upsell': { step: 4, progress: 80, name: 'Upsell Offer' },
+      'listicle': { step: 5, progress: 100, name: 'Educational Content' }
+    };
+
+    // Navigation function with progress tracking
+    function navigateTo(pageId) {
+      // Update progress bar
+      const step = funnelSteps[pageId];
+      if (step) {
+        document.getElementById('progressFill').style.width = step.progress + '%';
+        console.log(`📊 Funnel Step ${step.step}/5: ${step.name}`);
+      }
+
+      // Hide all pages
+      document.querySelectorAll('.page').forEach(page => {
+        page.classList.remove('active');
+      });
+      
+      // Show target page
+      setTimeout(() => {
+        document.getElementById(pageId).classList.add('active');
+      }, 100);
+      
+      // Smooth scroll to top
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+
+      // Track in analytics (integrate with your tracking system)
+      console.log(`✅ Navigated to: ${pageId}`);
+    }
+
+    // Landing page form submission
+    document.getElementById('leadForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      
+      // Validation
+      if (name.length < 2) {
+        alert('Please enter your full name');
+        return;
+      }
+
+      if (!email.includes('@') || !email.includes('.')) {
+        alert('Please enter a valid email address');
+        return;
+      }
+      
+      // Store lead data
+      const leadData = {
+        name: name,
+        email: email,
+        timestamp: new Date().toISOString(),
+        source: 'landing_page',
+        funnel_step: 'lead_capture'
+      };
+      
+      console.log('📝 Lead captured:', leadData);
+      
+      // Integration point: Send to Supabase
+      // await supabase.from('leads').insert([leadData])
+      
+      // Success message
+      alert(`🎉 Success! Redirecting you to your free training, ${name.split(' ')[0]}!`);
+      
+      // Navigate to sales page (Step 2)
+      setTimeout(() => {
+        navigateTo('sales');
+      }, 800);
+    });
+
+    // Initialize funnel
+    document.addEventListener('DOMContentLoaded', function() {
+      console.log('🚀 Complete Sales Funnel Loaded');
+      console.log('📍 Funnel Sequence: Landing → Sales → Thank You → Upsell → Listicle');
+      console.log('✅ All pages ready for navigation');
+    });
+
+    // Track time on each page
+    let pageStartTime = Date.now();
+    let currentPage = 'landing';
+
+    // Update current page tracking on navigation
+    const originalNavigateTo = navigateTo;
+    navigateTo = function(pageId) {
+      const timeOnPage = Math.round((Date.now() - pageStartTime) / 1000);
+      console.log(`⏱️ Time on ${currentPage}: ${timeOnPage} seconds`);
+      
+      currentPage = pageId;
+      pageStartTime = Date.now();
+      
+      originalNavigateTo(pageId);
+    };
+  </script>
+
+</body>
+</html>
